@@ -18,8 +18,8 @@ def _run_sql(filename):
             stderr=subprocess.STDOUT,
             shell=True
         )
-    except subprocess.CalledProcessError, ex:
-        print ex.output
+    except subprocess.CalledProcessError as ex:
+        print(ex.output)
         os.exit(1)
 
 
