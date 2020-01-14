@@ -3,5 +3,6 @@ Flask-Sqlalchemy
 Flask-Migrate
 Flask-login
 Flask-Script
+Flask-paginate
 Jinja2
 docopt

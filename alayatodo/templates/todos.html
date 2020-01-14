@@ -32,7 +32,7 @@
         {% endfor %}
         <tr>
             <form method="post" action="{{ url_for('todos_POST') }}">
-                <td colspan="3">
+                <td colspan="4">
                     <input type="textbox" name="description" class="small-6 small-center" placeholder="Description...">
                 </td>
                 <td>
@@ -41,5 +41,7 @@
             </form>
         </tr>
     </table>
-</div>
+    <div class="text-center">
+        {{ pagination.links }}
+    </div>
 {% endblock %}
