@@ -37,5 +37,5 @@ class Todo(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'description': self.description,
-            'completed': "Yes" if self.completed==0 else "No"
+            'completed': True if self.completed==0 else False
         }
