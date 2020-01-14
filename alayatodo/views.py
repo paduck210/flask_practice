@@ -74,3 +74,17 @@ def todo_delete(id):
     db.session.delete(todo)
     db.session.commit()
     return redirect('/todo')
+
+
+@app.route('/todo/<id>/completed/<status>', methods=['POST'])
+@login_required
+def todo_completed(id, status):
+    todo = Todo.query.filter_by(id=id).first()
+    if status == '1':
+        todo.mark_completed()
+        db.session.commit()
+        return redirect('/todo')
+    else:
+        todo.mark_uncompleted()
+        db.session.commit()
+        return redirect('/todo')
