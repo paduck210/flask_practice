@@ -64,6 +64,7 @@ def todos_POST():
     todo = Todo(user_id=current_user.id, description=description)
     db.session.add(todo)
     db.session.commit()
+    flash("New Todo added")
     return redirect('/todo')
 
 
@@ -73,6 +74,7 @@ def todo_delete(id):
     todo = Todo.query.filter_by(id=id).first()
     db.session.delete(todo)
     db.session.commit()
+    flash("Todo deleted")
     return redirect('/todo')
 
 
