@@ -68,7 +68,7 @@ def todos_POST():
     return redirect('/todo')
 
 
-@app.route('/todo/<id>', methods=['GET','POST'])
+@app.route('/todo/<id>', methods=['POST'])
 @login_required
 def todo_delete(id):
     todo = Todo.query.filter_by(id=id).first()
