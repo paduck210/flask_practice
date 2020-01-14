@@ -53,9 +53,10 @@ def todo(id):
 def todos():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     per_page = app.config['TODO_PER_PAGE']
-    todos = Todo.query.paginate(page, app.config['TODO_PER_PAGE'], False)
-    total_todos = Todo.query.count()
-    pagination = Pagination(page=page, per_page=per_page, total=total_todos, record_name='todos', css_framework='foundation')
+    todos = Todo.query.filter_by(user_id=current_user.id).paginate(page, per_page, False)
+    total_todos = Todo.query.filter_by(user_id=current_user.id).count()
+    pagination = Pagination(page=page, per_page=per_page, total=total_todos,
+                            record_name='todos', css_framework='foundation')
     return render_template('todos.html', todos=todos.items, pagination=pagination)
 
 

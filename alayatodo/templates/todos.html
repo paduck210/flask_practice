@@ -8,13 +8,9 @@
         {% for todo in todos %}
             <tr>
                 <td>
-                    {% if todo.user_id == current_user.id %}
                     <form method="POST" action="{{ url_for('todo_completed', id=todo.id, status=0 if todo.completed == 1 else 1) }}">
-                        <button type="submit" class="btn btn-xs"><span class="glyphicon {% if todo.completed %}glyphicon-check{% else %}glyphicon-unchecked{% endif %}"></span></button>
+                        <button type="submit" class="btn btn-xs"><span class="glyphicon {% if todo.completed == 1 %}glyphicon-check{% else %}glyphicon-unchecked{% endif %}"></span></button>
                     </form>
-                    {% else %}
-                        <button type="submit" class="btn btn-xs"><span style="color:lightgrey" class="glyphicon {% if todo.completed %}glyphicon-check{% else %}glyphicon-unchecked{% endif %} disabled "></span></button>
-                    {% endif %}
                 </td>
                 <td>{{ todo.id }}</td>
                 <td>{{ todo.user_id }}</td>

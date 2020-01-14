@@ -1,8 +1,7 @@
 import os
-from flask import Flask, g
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-import sqlite3
 from flask_login import LoginManager
 
 
