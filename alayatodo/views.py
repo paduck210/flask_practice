@@ -3,7 +3,8 @@ from flask import (
     redirect,
     render_template,
     request,
-    flash
+    flash,
+    jsonify
     )
 from flask_paginate import Pagination, get_page_parameter
 from flask_login import current_user, login_required, logout_user, login_user
@@ -56,6 +57,13 @@ def todos():
     total_todos = Todo.query.count()
     pagination = Pagination(page=page, per_page=per_page, total=total_todos, record_name='todos', css_framework='foundation')
     return render_template('todos.html', todos=todos.items, pagination=pagination)
+
+
+@app.route('/todo/<id>/json', methods=['GET'])
+@login_required
+def todo_json(id):
+    todo = Todo.query.filter_by(id=id).first()
+    return jsonify(todo.make_dict())
 
 
 @app.route('/todo', methods=['POST'])

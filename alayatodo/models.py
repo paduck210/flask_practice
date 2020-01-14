@@ -31,3 +31,11 @@ class Todo(db.Model):
 
     def mark_uncompleted(self):
         self.completed = 0
+
+    def make_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'description': self.description,
+            'completed': "Yes" if self.completed==0 else "No"
+        }
