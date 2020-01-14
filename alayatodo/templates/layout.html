@@ -21,11 +21,11 @@
             <li><a href="/todo">Todo list</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            {% if session.user %}
-              <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-user"></span>
-                {{ session.user.username }} Logout</a></li>
-            {% else %}
+            {% if current_user.is_anonymous %}
               <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% else %}
+              <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-user"></span>
+                {{ current_user.username }} Logout</a></li>
             {% endif %}
           </ul>
         </div>
