@@ -4,6 +4,7 @@ Flask-Migrate
 Flask-login
 Flask-Script
 Flask-paginate
+Flask-wtf
 Jinja2
 docopt
 werkzeug

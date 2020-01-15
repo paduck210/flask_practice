@@ -9,6 +9,7 @@
             <td>
                 {% if todo.user_id == current_user.id %}
                 <form method="POST" action="{{ url_for('todo_completed', id=todo.id, status=0 if todo.completed == 1 else 1) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                     <button type="submit" class="btn btn-xs"><span class="glyphicon {% if todo.completed %}glyphicon-check{% else %}glyphicon-unchecked{% endif %} glyphicon-white"></span></button>
                 </form>
                 {% else %}
@@ -20,6 +21,7 @@
             <td>{{ todo.description }}</td>
             <td>
                 <form method="post" action="{{ url_for('todo_delete', id=todo.id) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                     <button type="submit" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove glyphicon-white"></span></button>
                 </form>
             </td>
