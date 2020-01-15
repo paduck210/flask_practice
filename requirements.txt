@@ -6,3 +6,4 @@ Flask-Script
 Flask-paginate
 Jinja2
 docopt
+werkzeug

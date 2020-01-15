@@ -28,11 +28,19 @@ def login_POST():
     username = request.form.get('username')
     password = request.form.get('password')
     user = User.query.filter_by(username=username).first()
-    if user == None or user.password != password:
+
+    if user is None:
+        print('no username')
+        flash("There is no username: {}".format(username))
         return redirect('/login')
-    if user:
-        login_user(user)
-        return redirect('/todo')
+
+    if not user.check_password(password):
+        print('no password')
+        flash("Password Incorrect, retry!")
+        return redirect('/login')
+
+    login_user(user)
+    return redirect('/todo')
 
 
 @app.route('/logout')
